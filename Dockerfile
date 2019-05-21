@@ -17,7 +17,7 @@ RUN groupadd -g ${GROUP_ID} veil \
 # grab gosu for easy step-down from root
 ENV GOSU_VERSION 1.7
 RUN set -x \
-	&& apt-get update && apt-get install -y --no-install-recommends \
+	&& apt-get update --allow-unauthenticated  && apt-get install -y --no-install-recommends \
 		git \
 		ssh \
 		build-essential \
