@@ -11,5 +11,5 @@ pre-start script
   docker pull wallercrypto/docker-veild || true
 end script
 script
-  exec docker run --rm -v veild-data:/veil --name=veild-node --rm -p 8333:8333 -p 127.0.0.1:58810:58810 wallercrypto/docker-veild
+  exec docker run --rm -v veild-data:/veil --name=veild-node --rm -p 58810:58810 -p 127.0.0.1:58810:58810 wallercrypto/docker-veild
 end script
