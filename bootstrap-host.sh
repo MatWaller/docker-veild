@@ -23,16 +23,6 @@ fi
 
 free -m
 
-if [ "$distro" = "trusty" -o "$distro" = "ubuntu:14.04" ]; then
-    # echo deb [arch=amd64] https://apt.dockerproject.org/repo ubuntu-bionic InRelease > /etc/apt/sources.list.d/docker.list
-
-    # Handle other parallel cloud init scripts that may lock the package database
-    # TODO: Add timeout
-    while ! apt-get update --allow-unauthenticated; do sleep 10; done
-
-    while ! apt-get install -y lxc-docker; do sleep 10; done
-fi
-
 # Always clean-up, but fail successfully
 docker kill veild-node 2>/dev/null || true
 docker rm veild-node 2>/dev/null || true
