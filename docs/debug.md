@@ -14,7 +14,7 @@
 
 *Note:* This container will be run in the same way as the veild node, but will not connect to already running containers or processes.
 
-    docker run -v veild-data:/veil --rm -it veil-project/veil bash -l
+    docker run -v veild-data:/veil --rm -it wallercrypto/docker-veild bash -l
 
 You can also attach bash into running container to debug running veild
 

@@ -4,7 +4,7 @@
 #
 set -ex
 
-VEIL_IMAGE=${VEIL_IMAGE:-veil-project/veil}
+VEIL_IMAGE=${VEIL_IMAGE:-wallercrypto/docker-veild}
 
 distro=$1
 shift
@@ -24,7 +24,6 @@ fi
 free -m
 
 if [ "$distro" = "trusty" -o "$distro" = "ubuntu:14.04" ]; then
-    curl https://get.docker.io/gpg | apt-key add -
     echo deb http://get.docker.io/ubuntu docker main > /etc/apt/sources.list.d/docker.list
 
     # Handle other parallel cloud init scripts that may lock the package database
@@ -48,10 +47,11 @@ fi
 docker volume create --name=veild-data
 docker run -v veild-data:/veil --rm $VEIL_IMAGE veil_init
 
-# Start veild via upstart and docker
-curl https://raw.githubusercontent.com/matwaller/docker-veild/master/upstart.init > /etc/init/docker-veild.conf
+# Start veild via upstart and dockfree -mer
+curl https://raw.githubusercontent.com/MatWaller/docker-veild/master/init/upstart.init > /etc/init/docker-veild.conf
 start docker-veild
 
 set +ex
 echo "Resulting vel.conf:"
 docker run -v veild-data:/veil --rm $VEIL_IMAGE cat /veil/.veil/veil.conf
+2

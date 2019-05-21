@@ -11,7 +11,7 @@ Restart=always
 # Modify IP6_PREFIX to match network config
 Environment="NAME=veild"
 Environment="DATA_VOL=veild-data"
-Environment="IMG=veil-project/veil:dev"
+Environment="IMG=wallercrypto/docker-veild:dev"
 Environment="PORT=58810:58810/tcp"
 
 # To override environment variables, use local configuration directory:

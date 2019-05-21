@@ -10,7 +10,7 @@ You can use environment variables to customize config ([see docker run environme
             -e PRINTTOCONSOLE=1 \
             -e RPCUSER=mysecretrpcuser \
             -e RPCPASSWORD=mysecretrpcpassword \
-            veil-project/veil
+            wallercrypto/docker-veild
 
 Or you can use your very own config file like that:
 
@@ -18,4 +18,4 @@ Or you can use your very own config file like that:
             -p 58810:58810 \
             -p 127.0.0.1:58810:58810 \
             -v /etc/myveilconf.conf:/veil/.veil/veil.conf \
-            veil-project/veil
+            wallercrypto/docker-veild

@@ -18,6 +18,8 @@ RUN groupadd -g ${GROUP_ID} veil \
 ENV GOSU_VERSION 1.7
 RUN set -x \
 	&& apt-get update && apt-get install -y --no-install-recommends \
+		git \
+		ssh \
 		build-essential \
 		autotools-dev \
 		automake \
@@ -44,6 +46,8 @@ RUN set -x \
 		obfs4proxy \
 		tor \
 		wget \
+		libdb++-dev \
+		libgmp-dev \
 	&& wget -O /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$(dpkg --print-architecture)" \
 	&& wget -O /usr/local/bin/gosu.asc "https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$(dpkg --print-architecture).asc" \
 	&& export GNUPGHOME="$(mktemp -d)" \
@@ -69,11 +73,13 @@ VOLUME ["/veil"]
 
 EXPOSE 58810 58810 18332 18333
 
-# clone & build the veil daemon.
-RUN git clone https://github.com/veil-project/veil
-RUN cd veil && ./autogen.sh && ./configure && make
 
-WORKDIR /veil
+RUN ssh-keyscan -t rsa github.com | ssh-keygen -lf - 
+
+# clone & build the veil daemon.
+RUN	git clone git://github.com/veil-project/veil ~/veil && cd ~/veil && ./autogen.sh && ./configure --with-incompatible-bdb && make -j8
+
+WORKDIR /veil/veil
 
 COPY docker-entrypoint.sh /usr/local/bin/
 ENTRYPOINT ["docker-entrypoint.sh"]
