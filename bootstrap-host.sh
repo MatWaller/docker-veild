@@ -28,7 +28,7 @@ if [ "$distro" = "trusty" -o "$distro" = "ubuntu:14.04" ]; then
 
     # Handle other parallel cloud init scripts that may lock the package database
     # TODO: Add timeout
-    while ! apt-get update; do sleep 10; done
+    while ! apt-get update --allow-unauthenticated; do sleep 10; done
 
     while ! apt-get install -y lxc-docker; do sleep 10; done
 fi
