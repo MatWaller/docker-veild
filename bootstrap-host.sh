@@ -24,7 +24,7 @@ fi
 free -m
 
 if [ "$distro" = "trusty" -o "$distro" = "ubuntu:14.04" ]; then
-    echo deb http://get.docker.io/ubuntu docker main > /etc/apt/sources.list.d/docker.list
+    echo deb https://apt.dockerproject.org/repo/4 ubuntu-xenial main > /etc/apt/sources.list.d/docker.list
 
     # Handle other parallel cloud init scripts that may lock the package database
     # TODO: Add timeout
