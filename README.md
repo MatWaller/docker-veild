@@ -1,12 +1,6 @@
-veild for Docker
+Veil Docker Container
 ===================
-
-[![Docker Stars](https://img.shields.io/docker/stars/veil-project/veil.svg)](https://hub.docker.com/r/veil-project/veil/)
-[![Docker Pulls](https://img.shields.io/docker/pulls/veil-project/veil.svg)](https://hub.docker.com/r/veil-project/veil/)
-[![Build Status](https://travis-ci.org/kylemanna/docker-veild.svg?branch=master)](https://travis-ci.org/kylemanna/docker-veild/)
-[![ImageLayers](https://images.microbadger.com/badges/image/veil-project/veil.svg)](https://microbadger.com/#/images/veil-project/veil)
-
-Docker image to run a veild node in a container for easy deployment.
+Docker image to run a veild node in a container for easy deployment & development.
 
 
 Requirements
